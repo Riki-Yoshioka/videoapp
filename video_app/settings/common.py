@@ -29,7 +29,9 @@ SECRET_KEY = os.getenv(
     'django-insecure-8&31g9!l+lfvfddxc6^k$_610$$j$b85dp88(y#!l2+7fw0a#p'
 )
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG を読み込む
+DEBUG = os.getenv("DEBUG", "0").lower() in ("1", "on", "t", "true", "y", "yes")
+
 
 ALLOWED_HOSTS = []
 
@@ -129,5 +131,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DEBUG を読み込む
-DEBUG = os.getenv("DEBUG", "0").lower() in ("1", "on", "t", "true", "y", "yes")
+
+AUTH_USER_MODEL = "main.User"
